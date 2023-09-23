@@ -6,7 +6,7 @@ const Header = () => {
             <Link to='/'>
                 <div>People App</div>
             </Link>
-            <link style={{color: 'white'}} to='/people/test'>Test</link>
+            <Link style={{color: 'white'}} to='/people/test'>Test</Link>
         </nav>
     )
 }
