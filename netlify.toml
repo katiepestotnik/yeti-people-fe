@@ -1,3 +1,3 @@
 [[redirects]]
-  from = "https://remarkable-unicorn-5e00d9.netlify.app/"
-  to = "https://remarkable-unicorn-5e00d9.netlify.app/"
+  from = "/*"
+  to = "/index.html"
