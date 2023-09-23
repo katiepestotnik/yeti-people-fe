@@ -6,6 +6,7 @@ const Header = () => {
             <Link to='/'>
                 <div>People App</div>
             </Link>
+            <link to='/people/test'>Test</link>
         </nav>
     )
 }
