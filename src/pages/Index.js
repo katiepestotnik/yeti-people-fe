@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom'
 import { useState } from 'react'
-const Index = ({ people, createPeople }) => {
+const Index = ({ people, createPeople, findPerson }) => {
     const [form, setForm] = useState({
         name: '',
         image: '',
@@ -21,20 +21,40 @@ const Index = ({ people, createPeople }) => {
             title: ''
         })
     }
-    const loaded = () => {
-        return people.map((person) => {
-            return <div key={person._id} className='person'>
-                <Link to={`/people/${person._id}`}>{person.name}</Link>
-                <img src={person.image} alt={person.name} />
-                <h3>{person.title}</h3>
-            </div>
-        })
+    const [search, setSearch] = useState('')
+  const handleSearch = (e) => {
+    e.preventDefault()
+    findPerson(search)
+      setSearch('')
     }
+  const handleSearchChange = (e) => {
+      setSearch(e.target.value)
+  }
+
+  const loaded = () => {
+      return people.map((person) => {
+        return <div key={person._id} className='person'>
+            <Link to={`/people/${person._id}`}>{person.name}</Link>
+            <img src={person.image} alt={person.name} />
+            <h3>{person.title}</h3>
+        </div>
+    })
+  }
+    
     const loading = () => {
         return(<h1>Loading...</h1>)
     }
     return (
-        <section>
+      <section>
+          <form onSubmit={handleSearch}>
+            <input
+            type='text'
+            value={search}
+            placeholder='Enter name to search'
+            onChange={handleSearchChange}
+            />
+            <input type='submit' value='search'/>
+          </form>
           <form onSubmit={handleSubmit}>
             <input
               type="text"

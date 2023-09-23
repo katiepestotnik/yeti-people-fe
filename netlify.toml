@@ -1,3 +1,7 @@
 [[redirects]]
-  from = "/*"
-  to = "/"
+  from = "https://remarkable-unicorn-5e00d9.netlify.app/"
+  to = "https://remarkable-unicorn-5e00d9.netlify.app/"
+
+[[redirects]]
+  from = "https://remarkable-unicorn-5e00d9.netlify.app/people/?"
+  to = "https://remarkable-unicorn-5e00d9.netlify.app/people/?"

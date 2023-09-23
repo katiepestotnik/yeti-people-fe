@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Index from '../pages/Index'
 import Show from '../pages/Show'
+import '../styles.scss'
 const Main = () => {
     const [people, setPeople] = useState([])
     const URL = `http://localhost:3001/people/`
@@ -9,6 +10,17 @@ const Main = () => {
         const response = await fetch(URL)
         const data = await response.json()
         setPeople(data)
+    }
+    const findPerson = async (search) => {
+        const response = await fetch(URL)
+        const data = await response.json()
+        data.forEach((person) => {
+            console.log(person)
+            if (person.name === search) {
+                setPeople([person])
+            }
+        })
+
     }
     const createPeople = async(person) => {
         await fetch(URL,{
@@ -24,7 +36,7 @@ const Main = () => {
         await fetch(URL + id, {
             method: 'PUT',
             headers: {
-                'Content-Type': "Applicaiton/json"
+                'Content-Type': "Application/json"
             },
             body: JSON.stringify(person)
         })
@@ -37,6 +49,7 @@ const Main = () => {
         getPeople()
     }
     useEffect(() => { getPeople() }, [])
+    console.log(people)
     return (
     <main>
         <Routes>
@@ -44,11 +57,13 @@ const Main = () => {
                 exact path='/'
                 element={<Index
                 people={people}
-                createPeople={createPeople} />} />
-                <Route path='/people/:id' element={<Show
-                    people={people}
-                    updatePeople={updatePeople}
-                    deletePeople={deletePeople} />} />    
+                createPeople={createPeople}
+                findPerson={findPerson}
+                />} />
+            <Route path='/people/:id' element={<Show
+                people={people}
+                updatePeople={updatePeople}
+                deletePeople={deletePeople} />} />    
         </Routes>    
     </main>)
 }
