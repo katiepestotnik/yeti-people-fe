@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import Index from '../pages/Index'
 import Show from '../pages/Show'
 import '../styles.scss'
+import Test from '../pages/Test'
 const Main = () => {
     const [people, setPeople] = useState([])
     const URL = `http://localhost:3001/people/`
@@ -63,7 +64,9 @@ const Main = () => {
             <Route path='/people/:id' element={<Show
                 people={people}
                 updatePeople={updatePeople}
-                deletePeople={deletePeople} />} />    
+                    deletePeople={deletePeople} />} />    
+            <Route path='/people/test' element={<Test/> }
+                />
         </Routes>    
     </main>)
 }
