@@ -60,13 +60,14 @@ const Main = () => {
                 people={people}
                 createPeople={createPeople}
                 findPerson={findPerson}
-                />} />
+                    />} />
+            <Route path='/people/test' element={<Test/> }
+                />
             <Route path='/people/:id' element={<Show
                 people={people}
                 updatePeople={updatePeople}
                     deletePeople={deletePeople} />} />    
-            <Route path='/people/test' element={<Test/> }
-                />
+
         </Routes>    
     </main>)
 }
